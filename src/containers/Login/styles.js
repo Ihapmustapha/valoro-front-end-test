@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: "15px"
   },
   loginFab: {
-    marginTop: "-15px"
+    marginTop: "-25px"
   },
   loginFabIcon: {
     width: "15px",
@@ -40,6 +40,26 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center"
+  },
+  imageCaptionContainer: {
+    height: "100%",
+    padding: "30px 30px 30px 30px"
+  },
+  imageWelcome: {
+    color: "white",
+    fontSize: "40px",
+    fontWeight: "700"
+  },
+  separator: {
+    width: "65px",
+    height: "3px",
+    backgroundColor: "white"
+  },
+  imageParagraph: {
+    marginTop: "25px",
+    color: "white",
+    fontWeight: "300",
+    textAlign: "center"
   },
   paper: {
     margin: theme.spacing(8, 4),
