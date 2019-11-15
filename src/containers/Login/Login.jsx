@@ -39,13 +39,19 @@ const Login = props => {
               direction="column"
               justify="center"
               alignItems="center"
+              className={classes.imageCaptionContainer}
             >
               <Grid item>
-                <Typography>Welcome</Typography>
+                <Typography className={classes.imageWelcome}>
+                  Welcome
+                </Typography>
+              </Grid>
+              <Grid item>
+                <div className={classes.separator}></div>
               </Grid>
 
               <Grid item>
-                <Typography>
+                <Typography className={classes.imageParagraph}>
                   {`Sed do eiusmod temporut laboure et dolore magna eliqua. Your perfect place to buy & sell`}
                 </Typography>
               </Grid>
