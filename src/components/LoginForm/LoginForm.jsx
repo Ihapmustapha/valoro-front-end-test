@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Fab from "@material-ui/core/Fab";
 import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
@@ -10,8 +10,24 @@ import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { connect } from "react-redux";
+import * as actions from "../../actions/index";
 
-const LoginForm = ({ classes }) => {
+const LoginForm = ({ classes, login }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    login(email, password);
+  };
+
+  const handleInput = e => {
+    let { name, value } = e.target;
+    if (name === "password") setPassword(value);
+    if (name === "email") setEmail(value);
+  };
+
   return (
     <Grid
       container
@@ -38,17 +54,19 @@ const LoginForm = ({ classes }) => {
           it takes less than a minute.
         </Typography>
       </Grid>
-      <form className={classes.form} noValidate>
+      <form className={classes.form} noValidate onSubmit={handleSubmit}>
         <TextField
           variant="standard"
           margin="normal"
           required
           fullWidth
-          id="username"
-          label="Username"
-          name="username"
-          autoComplete="username"
+          id="email"
+          label="Email"
+          name="email"
+          autoComplete="email"
           autoFocus
+          value={email}
+          onChange={handleInput}
         />
         <TextField
           variant="standard"
@@ -60,6 +78,8 @@ const LoginForm = ({ classes }) => {
           type="password"
           id="password"
           autoComplete="current-password"
+          value={password}
+          onChange={handleInput}
         />
         <Grid
           container
@@ -137,4 +157,9 @@ const LoginForm = ({ classes }) => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({
+  login: (email, password) => dispatch(actions.login(email, password))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
