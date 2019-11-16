@@ -1,0 +1,9 @@
+// loginActions.js
+export const LOGIN_TRIGGER = "LOGIN_TRIGGER";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+
+// dashboardActions.js
+export const FETCH_DASHBOARD_TRIGGER = "FETCH_DASHBOARD_TRIGGER";
+export const FETCH_DASHBOARD_SUCCESS = "FETCH_DASHBOARD_SUCCESS";
+export const FETCH_DASHBOARD_FAIL = "FETCH_DASHBOARD_FAIL";
