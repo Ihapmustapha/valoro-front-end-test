@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import * as actions from "../../actions/index";
 
-const LoginForm = ({ classes, login }) => {
+const LoginForm = ({ classes, login, state }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -67,6 +67,7 @@ const LoginForm = ({ classes, login }) => {
           autoFocus
           value={email}
           onChange={handleInput}
+          error={state.loginReducer.loginError ? true : false}
         />
         <TextField
           variant="standard"
@@ -80,6 +81,7 @@ const LoginForm = ({ classes, login }) => {
           autoComplete="current-password"
           value={password}
           onChange={handleInput}
+          error={state.loginReducer.loginError ? true : false}
         />
         <Grid
           container
@@ -157,7 +159,9 @@ const LoginForm = ({ classes, login }) => {
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  state
+});
 const mapDispatchToProps = dispatch => ({
   login: (email, password) => dispatch(actions.login(email, password))
 });
