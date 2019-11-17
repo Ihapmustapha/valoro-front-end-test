@@ -1,7 +1,8 @@
 import React from "react";
 import useStyles from "./styles";
 import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -15,6 +16,7 @@ import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import FolderIcon from "@material-ui/icons/Folder";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Avatar } from "@material-ui/core";
+import avatarImage from "../../../assets/avatar.jpg";
 
 const SideDrawer = props => {
   const classes = useStyles();
@@ -47,9 +49,43 @@ const SideDrawer = props => {
       }}
       anchor="left"
     >
-      <div className={classes.toolbar} />
-      <Avatar />
-      <Divider />
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.avatarContainer}
+      >
+        <Grid item>
+          <Avatar
+            variant="rounded"
+            src={avatarImage}
+            style={{ width: "70px", height: "70px", marginBottom: "15px" }}
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <Typography display="inline" variant="subtitle1">
+              Charles Kennedy
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              display="inline"
+              variant="caption"
+              className={classes.titleText}
+            >
+              Consultancy
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
       <List>
         {labels.map((text, index) => (
           <ListItem button key={text}>
