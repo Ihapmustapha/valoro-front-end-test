@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const drawerWidth = 240;
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -16,11 +17,14 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth
   },
-  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3)
+  },
+  avatarContainer: {
+    marginTop: "45px",
+    marginBottom: "45px"
   }
 }));
 
