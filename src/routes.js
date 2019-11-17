@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import history from "./history";
 import Login from "./containers/Login/Login";
 import Dashboard from "./containers/Dashboard/Dashboard";
 
@@ -9,24 +10,27 @@ const mapStateToProps = state => ({
 });
 
 const PrivateRoute = connect(mapStateToProps)(
-  ({ component: Component, path, userToken, ...rest }) => (
-    <Route
-      {...rest}
-      render={props => {
-        if (!userToken) return <Redirect to={{ pathname: "/login" }} />;
-      }}
-    />
-  )
+  ({ component: Component, path, userToken, ...rest }) => {
+    console.log("userToken: " + userToken);
+    return (
+      <Route
+        {...rest}
+        render={props => {
+          if (!userToken) return <Redirect to={{ pathname: "/login" }} />;
+        }}
+      />
+    );
+  }
 );
 
 const Routes = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <Switch>
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/" component={Dashboard} />
       <Route exact path="/login" component={Login} />
     </Switch>
-  </BrowserRouter>
+  </Router>
 );
 
 export default Routes;
