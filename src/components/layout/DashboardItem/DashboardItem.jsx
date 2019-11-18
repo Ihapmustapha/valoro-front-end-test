@@ -1,9 +1,11 @@
 import React from "react";
 
-const DashboardItem = props => {
+const DashboardItem = ({ name, pantoneValue, year }) => {
   return (
     <>
-      <p>Hello I'm Item</p>
+      <p>{name}</p>
+      <p>{pantoneValue}</p>
+      <p>{year}</p>
     </>
   );
 };

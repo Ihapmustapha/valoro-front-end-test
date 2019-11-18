@@ -11,6 +11,7 @@ const Dashboard = ({ fetchDashboard, dashboardData }) => {
 
   useEffect(() => {
     fetchDashboard();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(dashboardData);
@@ -21,8 +22,13 @@ const Dashboard = ({ fetchDashboard, dashboardData }) => {
       <SideDrawer />
       <div className={classes.dashboardElementContainer}>
         {dashboardData &&
-          dashboardData.map(elementData => (
-            <DashboardItem key={elementData.id} elementData={elementData} />
+          dashboardData.map(element => (
+            <DashboardItem
+              key={element.id}
+              name={element.name}
+              year={element.year}
+              pantoneValue={element.pantone_value}
+            />
           ))}
       </div>
     </>
