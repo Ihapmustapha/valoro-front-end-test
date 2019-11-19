@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useStyles from "./styles";
-import Topbar from "../../components/layout/Topbar/Topbar";
 import SideDrawer from "../../components/layout/SideDrawer/SideDrawer";
+import TopBar from "../../components/layout/TopBar/TopBar";
 import DashboardItem from "../../components/layout/DashboardItem/DashboardItem";
 import { connect } from "react-redux";
 import * as actions from "../../actions/index";
@@ -18,7 +18,7 @@ const Dashboard = ({ fetchDashboard, dashboardData }) => {
 
   return (
     <>
-      <Topbar />
+      <TopBar />
       <SideDrawer />
       <div className={classes.dashboardElementContainer}>
         {dashboardData &&
