@@ -17,6 +17,7 @@ const PrivateRoute = connect(mapStateToProps)(
         {...rest}
         render={props => {
           if (!userToken) return <Redirect to={{ pathname: "/login" }} />;
+          else return <Component {...props} />;
         }}
       />
     );
