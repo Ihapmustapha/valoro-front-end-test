@@ -8,6 +8,7 @@ import {
 import { connect } from "react-redux";
 import Login from "./containers/Login/Login";
 import Dashboard from "./containers/Dashboard/Dashboard";
+import NotFound from "./containers/NotFound/NotFound";
 
 const mapStateToProps = state => ({
   userToken: state.loginReducer.loginToken
@@ -48,6 +49,7 @@ const Routes = () => (
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/" component={Dashboard} />
       <PublicRoute exact path="/login" component={Login} />
+      <Route component={NotFound} />
     </Switch>
   </Router>
 );
