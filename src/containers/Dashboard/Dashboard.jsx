@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import useStyles from "./styles";
 import SideDrawer from "../../components/layout/SideDrawer/SideDrawer";
 import TopBar from "../../components/layout/TopBar/TopBar";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import DashboardItem from "../../components/layout/DashboardItem/DashboardItem";
 import { connect } from "react-redux";
 import * as actions from "../../actions/index";
@@ -20,17 +22,27 @@ const Dashboard = ({ fetchDashboard, dashboardData }) => {
     <>
       <TopBar />
       <SideDrawer />
-      <div className={classes.dashboardElementContainer}>
+      <Typography className={classes.pageHeadline} variant="h5">
+        Dashboard
+      </Typography>
+      <Grid
+        container
+        direction="row"
+        md={10}
+        lg={10}
+        className={classes.dashboardElementContainer}
+      >
         {dashboardData &&
           dashboardData.map(element => (
-            <DashboardItem
-              key={element.id}
-              name={element.name}
-              year={element.year}
-              pantoneValue={element.pantone_value}
-            />
+            <Grid item key={element.id}>
+              <DashboardItem
+                name={element.name}
+                year={element.year}
+                pantoneValue={element.pantone_value}
+              />
+            </Grid>
           ))}
-      </div>
+      </Grid>
     </>
   );
 };
